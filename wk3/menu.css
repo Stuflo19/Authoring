@@ -1,0 +1,23 @@
+h1,h2,h3{
+  font-weight: bold;
+  max-width: 1000px;
+  margin-left: 150px;
+  color: darkblue;
+}
+
+p{
+  font-size: 16px;
+  max-width: 1000px;
+  margin-left: 150px;
+}
+
+body{
+  font-family: 'Turret Road', cursive;
+  background-color: lightblue;
+}
+
+img{
+  float-left: 10px;
+  width:60px;
+  height:60px;
+}
