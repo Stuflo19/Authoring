@@ -1,0 +1,32 @@
+header {
+  background-color: darkgrey;
+  padding-bottom: 0px;
+  font-family: 'Turret Road', cursive;
+  max-width: 1000px;
+}
+
+nav {
+  background-color: grey;
+  flex-grow: 1;
+  flex-direction: row;
+  padding-top: 0px;
+  max-width: 1000px;
+}
+
+button {
+  background-color: grey;
+}
+
+main {
+  max-width: 1000px;
+}
+
+.mainStory {
+  float: left;
+  padding-bottom: 20px;
+  padding-right: 10px;
+}
+
+.secondStory {
+  max-width: 1000px;
+}
