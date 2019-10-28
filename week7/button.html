@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Link to external javasript file -->
+<script src="myScript.js"></script>
+</head>
+<body>
+<!-- Heading -->
+  <h1 id="id1">My Heading 1</h1>
+
+<!-- Button that changes the heading to be red -->
+  <button type="button" onclick="document.getElementById('id1').style.color = 'red';">
+    Click Me!
+  </button>
+
+<!-- Button that changes the heading to be blue -->
+  <button type="button" onclick="go()">
+    Click Me Too!
+  </button>
+
+<!-- Button linked to external JS file to change header to yellow -->
+  <button type="button" onclick="goAgain()">
+     Click Me for yellow!
+  </button>
+
+
+  <script>
+
+  //script that changes the heading to be blue
+    function go() {
+      document.getElementById('id1').style.color = 'blue';
+    }
+  </script>
+
+
+</body>
+</html>
