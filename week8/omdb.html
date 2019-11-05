@@ -60,21 +60,18 @@
             movieImage = movie.Poster;
             movieTitle = movie.Title;
             movieYear = movie.Year;
-            link = "singleMovie.html?tt1201607";
-            moreInfo = "more info";
+            movieID = movie.imdbID;
 
-            div.innerHTML = "<div class ='card'><img class='card-img-top' src=" + movieImage + "> <div class='card-body'><h5 class='card-title'>" + movieTitle + "</h5><p class='card-text'>" + movieYear + "</p> <a href=" + link +
-              " class='btn btn-primary'>" + moreInfo + "</a></div>";
+            div.innerHTML = "<div class='card'><img class='card-img-top' src=" + movieImage + "><div class='card-body'><h5 class='card-title'>" + movieTitle + "</h5><p class='card-text'>" + movieYear + "</p><a href=singleMovie.html?" + movieID + " class='btn btn-primary'>More Information</a></div>";
+           append(movieContainer, div);
+         })
+       })
+       .catch(function(error) {
+         console.log(error);
+       });
+     }
+   </script>
 
-            append(movieContainer, div);
-          })
-        })
-        .catch(function(error) {
-          // If there is any error you will catch them here
-          console.log("error");
-        });
-    }
-  </script>
 </body>
 
 </html>
