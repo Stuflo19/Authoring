@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <meta charset="utf-8">
+  <title>Okay master</title>
+</head>
+
+<body>
+  <div class="container">
+
+    <h1>Movies</h1>
+
+    <div class="form-group">
+      <label for="movieTitle">Movie Search Box</label>
+      <input class="form-control mr-sm-2" type="text" placeholder="Enter a films name" id="movieTitle">
+    </div>
+
+
+    <button class="btn btn-primary mb-4" onClick="getMovies()">Find my Movies</button>
+
+    <div class="row">
+
+      <div class="card-group" id=movies>
+
+
+
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const movieContainer = document.getElementById('movies');
+
+    function createNode(element) {
+      return document.createElement(element);
+    }
+
+    function append(parent, el) {
+      return parent.appendChild(el);
+    }
+
+    function getMovies() {
+      document.getElementById("movies").innerHTML = "";
+      var result = document.getElementById("movieTitle").value;
+      url = "https://www.omdbapi.com/?s=" + result + "&apikey=73edcd88";
+      fetch(url)
+        .then((resp) => resp.json())
+        .then(function(data) {
+          // Here you get the data to modify as you please
+          let movies = data.Search;
+          return movies.map(function(movie) {
+            div = createNode('div');
+
+            div.setAttribute('class', 'col-sm-3 mb-2');
+            div.setAttribute('style', 'width: 18rem;');
+
+            movieImage = movie.Poster;
+            movieTitle = movie.Title;
+            movieYear = movie.Year;
+            link = "singleMovie.html?tt1201607";
+            moreInfo = "more info";
+
+            div.innerHTML = "<div class ='card'><img class='card-img-top' src=" + movieImage + "> <div class='card-body'><h5 class='card-title'>" + movieTitle + "</h5><p class='card-text'>" + movieYear + "</p> <a href=" + link +
+              " class='btn btn-primary'>" + moreInfo + "</a></div>";
+
+            append(movieContainer, div);
+          })
+        })
+        .catch(function(error) {
+          // If there is any error you will catch them here
+          console.log("error");
+        });
+    }
+  </script>
+</body>
+
+</html>

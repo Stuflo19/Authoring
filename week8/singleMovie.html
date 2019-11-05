@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <meta charset="utf-8">
+  <title>Your movie</title>
+</head>
+
+<body>
+
+
+  <div class="container">
+    <div class="row">
+
+      <div class="col-12" id="movies">
+        <img class="float-left" id="poster" />
+        <h1 id="title">Title:</h1>
+        <p> <strong>Year released:</strong> <span id="year"></span>   </p>
+        <p> <strong>Plot:</strong>          <span id=plot></span>     </p>
+        <p> <strong>Actors:</strong>        <span id=actors></span>   </p>
+        <p> <strong>Director(s):</strong>   <span id=director></span></p>
+        <p> <strong>Rating:</strong>        <span id=rating></span>   </p>
+        <a class="btn btn-dark" href="omdb.html">Back</a>
+      </div>
+
+    </div>
+
+
+
+    <script>
+
+      const movieContainer = document.getElementById('movies');
+
+      function createNode(element) {
+        return document.createElement(element);
+      }
+
+      function append(parent, el) {
+        return parent.appendChild(el);
+      }
+
+      var url = window.location.href;
+      var searchString = url.split('?');
+      searchString = searchString[1]
+      url = "https://www.omdbapi.com/?i="+searchString+"&apikey=73edcd88";
+      console.log(url);
+
+      fetch(url)
+        .then((resp) => resp.json())
+        .then(function(data) {
+          console.log(data);
+          let movie = data;
+
+          movieImage = movie.Poster;
+          movieTitle = movie.Title;
+          movieYear = movie.Released;
+          movieID = movie.imdbID;
+          movieActors = movie.Actors;
+          moviePlot = movie.Plot;
+          movieGenre = movie.Genre;
+          movieDirector = movie.Director;
+          movieRating = movie.imdbRating;
+
+          document.getElementById("poster").src = movieImage;
+          document.getElementById("title").innerHTML = movieTitle;
+          document.getElementById("year").innerHTML = movieYear;
+          document.getElementById("plot").innerHTML = moviePlot;
+          document.getElementById("actors").innerHTML = movieActors;
+          document.getElementById("director").innerHTML = movieDirector;
+          document.getElementById("rating").innerHTML = movieRating;
+
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    </script>
+
+</body>
+
+</html>
