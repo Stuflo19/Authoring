@@ -1,0 +1,13 @@
+body{
+
+padding: 0;
+margin: 0; /*makes the box model fit the screen size exactly */
+
+}
+
+html,body, #map {
+
+  height: 100vh;
+  width: 100vw;
+
+}
