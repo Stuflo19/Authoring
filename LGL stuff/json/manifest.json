@@ -7,15 +7,9 @@
       "type": "image/png",
       "sizes": "192x192"
   },
-  {
-      "src": "images/LGL4.png",
-      "type": "image/png",
-      "sizes": "512x512"
-  }
 ],
-"start_url": "./LGL%20stuff/map.html",
-"background_color": "#33cc33",
+"start_url": ".",
+"background_color": "#00000",
 "display": "standalone",
 "orientation": "landscape",
-"scope": "/LGL%20stuff/"
 }
