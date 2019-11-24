@@ -1,36 +1,103 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
 
-    <link rel="manifest" href="json/manifest.json">
+<head>
+  <meta charset="utf-8">
 
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-          integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-          crossorigin=""/>
-    <link rel="stylesheet" href="CSS/map.css">
+  <link rel="manifest" href="json/manifest.json">
 
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.js'></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
+  <link rel="stylesheet" href="CSS/map.css">
+
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.js'></script>
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.css' rel='stylesheet' />
 
-    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-            integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-            crossorigin="">
-    </script>
+  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin="">
+  </script>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-    <title>Little Green Map</title>
+  <title>Little Green Map</title>
 
-  </head>
-  <body>
+  <script type="text/javascript">
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function()) {
+        navigator.serviceWorker.register('/sw.js').then(function(registration) {
+            //registration
+            console.log('ServiceWorker registartion Successful');
+          },
 
-    <div id="map">
+          function(err) {
+            console.log('Service worker registration failed');
+          });
+      });
+    }
 
-      </div>
+    //make someone code these fucking things
 
-    <script src="javaScript/map.js">
+    var CACHE_NAME = 'lgl-pwa';
+    var urlsToCache = [
+      '/',
+      '/map.html',
+      '/json/manifest.json'
+    ];
 
-    </script>
-  </body>
+    self.addEventListener('install', function(event){
+
+      //perform install
+      event.waitUntil(
+        caches.open(CACHE_NAME)
+        .then(function(cache) {
+          console.log('Opened cache');
+          return cache.addAll(urlsToCache);
+        })
+      );
+    });
+
+    self.addEventListener('fetch', function(event) {
+      event.respondWith(
+        caches.match(event.request)
+        .then(function(response) {
+          //cache hit - return response
+          if(response) {
+            return response;
+          }
+
+          return fetch(event.request).then(
+            function(response) {
+              //check if valid response
+              if(!response || response.status !== 200 || response.type !== 'basic') {
+                return response;
+              }
+
+              var responseToCache = response.clone();
+
+              caches.open(CACHE_NAME)
+              .then(function(cache){
+                cache.put(event.request, responseToCache);
+              });
+
+              return response;
+            }
+          );
+
+        })
+      );
+    });
+
+  </script>
+
+</head>
+
+<body>
+
+  <div id="map">
+
+  </div>
+
+  <script src="javaScript/map.js">
+
+  </script>
+</body>
+
 </html>
