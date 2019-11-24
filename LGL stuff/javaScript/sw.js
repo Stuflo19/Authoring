@@ -1,7 +1,8 @@
-var CACHE_NAME = 'lgl-pwa';
+var CACHE_NAME = 'lgl-PWA';
 var urlsToCache = [
   '/',
   '/map.html',
+  '/map.js',
   '/json/manifest.json'
 ];
 
