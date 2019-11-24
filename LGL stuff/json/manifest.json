@@ -7,7 +7,7 @@
 "display": "standalone",
 "orientation": "landscape",
 "icons": [{
-      "src": "https://via.placeholder.com/192x192",
+      "src": "images/app-logo.png",
       "type": "image/png",
       "sizes": "192x192"
   }]
