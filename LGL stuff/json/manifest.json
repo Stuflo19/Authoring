@@ -1,15 +1,14 @@
 {
 "short_name": "LGL Maps",
 "name": "Little Green Larder Maps",
-"icons": [
-  {
-      "src": "images/LGL4.png",
-      "type": "image/png",
-      "sizes": "144x144"
-  }
-],
-"start_url": ".",
+"start_url": "/",
+"theme_color": "#00000",
 "background_color": "#00000",
 "display": "standalone",
 "orientation": "landscape",
+"icons": [{
+      "src": "https://via.placeholder.com/192x192",
+      "type": "image/png",
+      "sizes": "192x192"
+  }]
 }
