@@ -1,9 +1,9 @@
 var CACHE_NAME = 'lgl-PWA';
 var urlsToCache = [
   '/',
-  'map.html',
+  '/map.html',
   'javaScript/map.js',
-  'manifest.json'
+  '/manifest.json'
 ];
 
 self.addEventListener('install', function(event){
