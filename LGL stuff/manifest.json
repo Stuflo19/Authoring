@@ -1,13 +1,13 @@
 {
 "short_name": "LGL Maps",
 "name": "Little Green Larder Maps",
-"start_url": "https://stuflo19.github.io/Authoring/LGL%20stuff/",
+"start_url": "/",
 "theme_color": "#00000",
 "background_color": "#00000",
 "display": "standalone",
 "orientation": "landscape",
 "icons": [{
-      "src": "/images/app-logo.png",
+      "src": "https://stuflo19.github.io/Authoring/LGL%20stuff/images/app-logo.png",
       "type": "image/png",
       "sizes": "192x192"
   }]
