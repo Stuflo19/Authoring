@@ -7,7 +7,7 @@
 "display": "standalone",
 "orientation": "landscape",
 "icons": [{
-      "src": "Authoring/LGL%20stuff/images/app-logo.png",
+      "src": "/images/app-logo.png",
       "type": "image/png",
       "sizes": "192x192"
   }]
